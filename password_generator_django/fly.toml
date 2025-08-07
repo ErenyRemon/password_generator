@@ -1,6 +1,7 @@
 app = "password-generator-frzlsq"
 
 [build]
+  dockerfile = "password_generator_django/Dockerfile"
 
 [env]
   PORT = "8000"
