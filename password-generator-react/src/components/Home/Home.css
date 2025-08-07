@@ -1,0 +1,299 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Inter', sans-serif;
+  direction: rtl;
+  background-color: #f4f4f4;
+
+}
+
+.App {
+  text-align: center;
+  padding: 40px;
+  background-color: #f4f4f4;
+  /* color: black; */
+  color: #222222;
+}
+
+.App[dir="ltr"] {
+  text-align: left;
+}
+
+.App[dir="rtl"] {
+  text-align: right;
+}
+
+
+/* .App.dark {
+  background-color: #121212;
+  color: white;
+} */
+
+.mainHeader {
+  /* text-align: center; */
+  /* color: #F8EF00; */
+  color: #0077b6;
+  width: 13%;
+  margin-left: 14%;
+  margin-right: 16%;
+}
+
+.mainPassword {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form {
+  max-width: 400px;
+}
+
+.form label {
+  display: block;
+  margin: 15px 0;
+  /* color: #F8EF00; */
+  color: #0077b6;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  /* border: 1px solid #00F0FF;
+  background-color: #00f0ff38 !important;
+  color: #F8EF00; */
+  border: 1px solid #0077b6;
+  /* أزرق */
+  background-color: #e0f7fa;
+  /* أزرق باهت */
+  color: #222;
+  /* نص غامق */
+  border-radius: 10px;
+}
+
+.copyButton {
+  padding: 0px;
+  margin: 0px;
+}
+
+.copyButton svg {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+}
+
+.history h2 {
+  /* color: #d3ef00; */
+  color: #0096c7;
+
+}
+
+.history ul {
+  list-style: none;
+  /* يشيل النقط */
+  padding: 0;
+  /* يشيل المسافة الجانبية */
+  margin: 0;
+  /* يشيل المسافة من فوق وتحت لو فيه */
+}
+
+.history ul li {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  /* background-color: black; */
+  background-color: #0077b6;
+
+  color: #d3ef00;
+  border: 1px solid #d3ef00;
+
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  /* background-color: #d3ef00; */
+  background-color: #0096c7;
+  color: white;
+  /* color: black; */
+  /* border: 1px solid black; */
+  border: 1px solid #0096c7;
+
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 18px;
+  align-items: center;
+  /* align-content: center; */
+  display: flex;
+  flex-direction: column;
+}
+
+/* .App.dark .result {
+  color: white;
+}
+
+.App.dark .copied {
+  color: white;
+} */
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.options {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.copied {
+  color: black;
+  font-weight: bold;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+
+.App.dark {
+  background-color: #121212;
+  color: white;
+}
+
+.App.dark .mainHeader {
+  color: #F8EF00;
+}
+
+.App.dark .form label {
+  color: #F8EF00;
+}
+
+.App.dark input {
+  border: 1px solid #00F0FF;
+  background-color: #00f0ff38 !important;
+  color: #F8EF00;
+}
+
+.App.dark .history h2 {
+  color: #d3ef00;
+}
+
+.App.dark button {
+  background-color: black;
+  color: #d3ef00;
+  border: 1px solid #d3ef00;
+}
+
+.App.dark button:hover {
+  background-color: #d3ef00;
+  color: black;
+  border: 1px solid black;
+}
+
+
+/* ====== RESPONSIVE DESIGN ====== */
+@media (max-width: 1024px) {
+  .mainPassword {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .mainHeader {
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .form {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .history {
+    width: 90%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .mainPassword {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .mainHeader {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    text-align: center;
+    width: auto;
+  }
+
+  .form label {
+    font-size: 0.9rem;
+  }
+
+  input {
+    padding: 6px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .history h2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .history ul li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .mainHeader {
+    font-size: 1.2rem;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .options {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

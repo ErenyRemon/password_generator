@@ -1,0 +1,215 @@
+*,
+body {
+    padding: 0px;
+    margin: 0px;
+    /* height: 100%; */
+    overflow: hidden;
+}
+
+
+.mainLogin {
+    /* display: flex; */
+    height: 100vh;
+}
+
+
+
+.loginRight {
+    /* background-color: aqua; */
+    position: relative;
+    padding-right: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: self-end !important;
+    height: 100%;
+}
+
+.loginRight img {
+    display: block;
+    width: 60.4%;
+    object-fit: contain;
+
+}
+
+.loginRightDown {
+    width: 60.4% !important;
+    position: absolute;
+    top: 267px;
+    left: 580px;
+    z-index: 1;
+}
+
+.loginRightUp {
+    height: 135%;
+}
+
+.loginLeft {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 100%;
+    z-index: 3;
+    /* position: relative; */
+}
+
+.loginLeft img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* object-fit: contain; */
+}
+
+.textOverImage {
+    /* position: absolute; */
+    top: 200px;
+    left: 10%;
+    /* color: white; */
+    /* z-index: 2; */
+    position: absolute;
+    width: 76%;
+    height: 70%;
+    z-index: 4;
+    /* أعلى من الصورة */
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: end;
+    /* padding-left: 10%; */
+    color: white;
+    /* background-color: rgba(0, 0, 0, 0.3); اختياري: تغميقة على الصورة */
+
+
+}
+
+.textOverImage h2 {
+    font-size: 50px;
+    margin: 0;
+    height: 111px;
+}
+
+.textOverImage button {
+    font-size: 16px;
+    margin-top: 10px;
+    height: 50px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+}
+
+.textOverImage button svg {
+    height: 24px;
+    width: 24px;
+}
+
+.loginMobileImage {
+    display: none;
+    width: 100%;
+    object-fit: contain;
+}
+
+
+@media (max-width: 768px){
+    .loginLeft {
+        position: absolute;
+        width: 50% !important;
+    }
+    
+    .textOverImage h2 {
+        font-size: 31px !important;
+    }
+    .textOverImage button {
+        width: 100%;
+        font-size: 15px !important;
+    }
+}
+
+
+/* ✅ Responsive design */
+@media (max-width: 1560px) {
+    .mainLogin {
+        /* display: flex; */
+        /* flex-direction: column; */
+        height: 100vh !important;
+    }
+
+    .loginRight {
+        width: 50%;
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center !important;
+    }
+
+    .loginRight img {
+        display: block;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .loginRightDown {
+        width: 80% !important;
+        position: absolute !important;
+        top: 224px !important;
+        left: 56px !important;
+        z-index: 1 !important;
+    }
+
+    .loginRightUp {
+        height: 120%;
+        /* width: 20% !important; */
+    }
+
+    .loginLeft {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 67%;
+        height: 100%;
+        z-index: 3;
+    }
+
+    .loginLeft img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .textOverImage {
+        top: 200px;
+        left: 10%;
+        position: absolute;
+        width: 76%;
+        height: 70%;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: end;
+        color: white;
+    }
+
+    .textOverImage h2 {
+        font-size: 32px;
+        text-align: end;
+        height: 117px !important;
+    }
+
+    .textOverImage button {
+        width: 95%;
+        font-size: 16px;
+    }
+
+    .loginRightUp,
+    .loginRightDown {
+        display: none !important;
+    }
+
+    .loginMobileImage {
+        display: block !important;
+        width: 100%;
+    }
+}
