@@ -1,0 +1,13 @@
+# React build
+/password-generator-react/node_modules
+/password-generator-react/build
+
+# Django
+/password_generator_django/__pycache__/
+password_generator_django/db.sqlite3
+*.pyc
+*.log
+
+# System
+.DS_Store
+.env

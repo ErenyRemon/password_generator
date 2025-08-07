@@ -1,0 +1,47 @@
+<!-- generator/templates/generator/index.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>مولّد الباسورد</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 مولّد الباسورد</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <label>عدد الحروف الكلي: <input type="number" name="total" required></label>
+      <br>
+      <label>عدد الحروف: <input type="number" name="letters" required></label>
+      <br>
+      <label>عدد الأرقام: <input type="number" name="numbers" required></label>
+      <br>
+      <label>عدد الرموز: <input type="number" name="symbols" required></label>
+      <br>
+      <button type="submit">توليد</button>
+    </form>
+
+    {% if password %}
+      <div class="result">
+        ✅ الباسورد: <strong id="pw">{{ password }}</strong>
+        <button onclick="copyPassword()">📋 نسخ</button><br>
+        مستوى الأمان: <strong>{{ strength }}</strong>
+      </div>
+    {% endif %}
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+  </div>
+
+  <script>
+    function copyPassword() {
+      const pw = document.getElementById("pw").textContent;
+      navigator.clipboard.writeText(pw).then(() => {
+        alert("تم نسخ الباسورد!");
+      });
+    }
+  </script>
+</body>
+</html>
