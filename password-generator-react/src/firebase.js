@@ -3,16 +3,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCEIwsQlOzzhacZv9J3XoPn84qT18nU-74",
-  authDomain: "password-generator-aa3de.firebaseapp.com",
-  projectId: "password-generator-aa3de",
-  storageBucket: "password-generator-aa3de.appspot.com",
-  messagingSenderId: "357623218229",
-  appId: "1:357623218229:web:50aea621a7acea44b3b17c",
-  measurementId: "G-5HXKXF2V0N"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
-
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
