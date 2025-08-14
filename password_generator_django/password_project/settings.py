@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-6-4#8k+5e!2@!$(4vu3#gk(avuer3*(vmj1)58itg16r42mph1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -140,4 +140,10 @@ LOCALE_PATHS = [
 
 ALLOWED_HOSTS = ['.onrender.com'] 
 
-CORS_ALLOW_ALL_ORIGINS = True  # أو حطي رابط الـ React بس
+
+CORS_ALLOW_ALL_ORIGINS = True  # للتجربة فقط، بعدين ممكن تحددي الدومين
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # للـ dev
+#     "https://your-frontend-domain.com"  # لو رفعتيه على Railway أو Netlify
+# ]

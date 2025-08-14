@@ -9,13 +9,14 @@ function Home() {
   const [letters, setLetters] = useState("");
   const [numbers, setNumbers] = useState("");
   const [symbols, setSymbols] = useState("");
-  const [password, setPassword] = useState("");
   const [history, setHistory] = useState([]); // ✅ New
   const [error, setError] = useState("");
   const [lang, setLang] = useState("ar");
   const [darkMode, setDarkMode] = useState(false);
+  const [password, setPassword] = useState("");
   const [strength, setStrength] = useState("");
-  
+
+
   const t = {
     ar: {
       title: "🔐 مولّد الباسورد",
@@ -59,7 +60,9 @@ function Home() {
 
   const langData = t[lang];
 
-  const generatePassword = () => {
+  const API_URL = process.env.REACT_APP_API_URL;
+
+  const generatePassword = async () => {
     const sum = Number(letters) + Number(numbers) + Number(symbols);
     if (Number(total) !== sum) {
       setError(langData.error);
@@ -69,32 +72,41 @@ function Home() {
     }
 
     setError("");
-    const lettersSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const numbersSet = "0123456789";
-    const symbolsSet = "!@#$%^&*()_+";
 
-    let chars = "";
-    chars += getRandomChars(lettersSet, Number(letters));
-    chars += getRandomChars(numbersSet, Number(numbers));
-    chars += getRandomChars(symbolsSet, Number(symbols));
+    try {
+      const response = await fetch(`${API_URL}/generate-password/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          total,
+          letters,
+          numbers,
+          symbols,
+        }),
+      });
 
-    const final = chars.split("").sort(() => Math.random() - 0.5).join("");
-    setPassword(final);
-    setHistory([final, ...history]); // ✅ Add to history
+      if (!response.ok) {
+        throw new Error("Failed to generate password");
+      }
 
-    // Strength
-    if (total < 8) setStrength(langData.weak);
-    else if (total < 12) setStrength(langData.medium);
-    else setStrength(langData.strong);
-  };
+      const data = await response.json();
+      setPassword(data.password);
+      setHistory([data.password, ...history]);
 
-  const getRandomChars = (charset, count) => {
-    let result = "";
-    for (let i = 0; i < count; i++) {
-      result += charset[Math.floor(Math.random() * charset.length)];
+      if (total < 8) setStrength(langData.weak);
+      else if (total < 12) setStrength(langData.medium);
+      else setStrength(langData.strong);
+
+    } catch (error) {
+      console.error("Error:", error);
+      setError("Error generating password");
     }
-    return result;
+
+
   };
+
 
   const [copiedIndex, setCopiedIndex] = useState(null);
   const copyPassword = (value, index) => {
@@ -109,19 +121,19 @@ function Home() {
   };
 
   const toggleMode = () => {
-  setDarkMode((prev) => {
-    const newMode = !prev;
-    if (newMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-    return newMode;
-  });
-};
+    setDarkMode((prev) => {
+      const newMode = !prev;
+      if (newMode) {
+        document.body.classList.add("dark");
+      } else {
+        document.body.classList.remove("dark");
+      }
+      return newMode;
+    });
+  };
 
   return (
-    <div style={{  padding: "5%" }}
+    <div style={{ padding: "5%" }}
       className={darkMode ? "App dark" : "App"}
       dir={lang === "ar" ? "rtl" : "ltr"}
     >
