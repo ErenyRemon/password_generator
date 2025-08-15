@@ -157,6 +157,12 @@ function Home() {
           </label>
 
           <button onClick={generatePassword}>{langData.generate}</button>
+          {password && (
+            <div>
+              <p>{langData.copy}: {password}</p>
+              <p>{langData.strength}: {strength}</p>
+            </div>
+          )}
         </div>
 
         {history.length > 0 && (
